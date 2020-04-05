@@ -14,9 +14,17 @@ Have an opinion about a movie you've seen? who doesn't? Take to the internet to 
 Users: creating users, logging in, persistent login, logging out, displaying user information.
 Posts: authrorized/restricted creating, updating, displaying, deleting of posts.
 
-## Post MVP:
+## Post MVP
 * Use React-Bootstrap Material UI 
 * Animation effects for certain clicks
 * Images for movies
 * Clips of movies where available
 * Interacting 404 page as well as a loading icon/page
+
+# Wireframes
+Mobile:
+<img src = "wireframe_movie_blog_project_3.png">
+
+
+# ERD:
+<img src = "ERD_movie_blog.png">
