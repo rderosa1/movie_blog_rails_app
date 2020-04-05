@@ -23,7 +23,7 @@ Posts: authrorized/restricted creating, updating, displaying, deleting of posts.
 
 # Wireframes
 Mobile:
-<img src = "wireframe_movie_blog_project_3.png">
+<img src = "wireframe_movie_blog_project_4.png">
 
 Laptop:
 <img src = "movie_blog_fullscreen.png">
