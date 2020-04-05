@@ -25,6 +25,8 @@ Posts: authrorized/restricted creating, updating, displaying, deleting of posts.
 Mobile:
 <img src = "wireframe_movie_blog_project_3.png">
 
+Laptop:
+<img src = "movie_blog_fullscreen.png">
 
 # ERD:
 <img src = "ERD_movie_blog.png">
