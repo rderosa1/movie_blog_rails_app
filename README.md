@@ -6,7 +6,7 @@ MovieMassacre is a fully functional fullstack CRUD app including authentication 
 Have an opinion about a movie you've seen? who doesn't? Take to the internet to respectfully share that opinion with others, and, through other's posts and comments, get to know what others think, as well as what they think about your opinions, in what will be an intelligent and collected dialogue I'm sure. MovieMassacre is a site to freely share your opinons through posts and comments, about movies and how they make us feel.
 It was designed as part of the Mandalorians winter 2020 Software Engineering Immersive cohort at General Assembly.
 
-This app was created using sseveral technologies, including; React/React Router for front-end data rendering, cors and bcrypt for authentication, and  Ruby and rails for backend, database migration and maintenance.
+This app was created using several technologies, including; React/React Router for front-end data rendering, cors and bcrypt for authentication, and  Ruby and rails for backend, database migration and maintenance.
 
 
 ### MVP
@@ -40,7 +40,7 @@ The entity relational diagram depicts the connection of users to movies, posts a
 * users and movies
 * posts and comments
 * movies and posts
-Here, the posts table acts as a join between users and movies, containing id's for both users and movies, while the movies table has only a foreign id for posts.
+* Here, the posts table acts as a join between users and movies, containing id's for both users and movies, while the movies table has only a foreign id for posts.
 <img src = "ERD_movie_blog.png">
 
 
