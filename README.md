@@ -34,6 +34,12 @@ Posts: authrorized/restricted creating, updating, displaying, deleting of posts.
 <img src = "movie_blog_fullscreen.png">
 
 # ERD:
+The entity relational diagram depicts the connection of users to movies, posts and comments. Here we see several one to many relationships between: 
+* users and posts
+* users and comments
+* users and movies
+* posts and comments
+* movies and comments
 <img src = "ERD_movie_blog.png">
 
 
