@@ -56,5 +56,6 @@ Home Page
            |__ Subcomments
 ```
 
-*Expected Challenges
+* Expected Challenges
+
 As my first fullstack app using ruby on rails, I am excited to understand how I can implement authorization parameters to create a more seemless user experience for those logged in to the site vs those who are not, as well as the differences in the capabilities of a user who was access/privelage and a user who does not. Also, implementing changes in state in the front end, to reflect changes in state in the back end for a logged in user. 
