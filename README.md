@@ -25,11 +25,12 @@ Posts: authrorized/restricted creating, updating, displaying, deleting of posts.
 * Clips of movies where available
 * Interacting 404 page as well as a loading icon/page
 
-# Wireframes
-Mobile:
+## Wireframes
+
+# Mobile:
 <img src = "wireframe_movie_blog_project_4.png">
 
-Laptop:
+# Laptop:
 <img src = "movie_blog_fullscreen.png">
 
 # ERD:
