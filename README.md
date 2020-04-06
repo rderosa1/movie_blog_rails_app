@@ -39,7 +39,8 @@ The entity relational diagram depicts the connection of users to movies, posts a
 * users and comments
 * users and movies
 * posts and comments
-* movies and comments
+* movies and posts
+Here, the posts table acts as a join between users and movies, containing id's for both users and movies, while the movies table has only a foreign id for posts.
 <img src = "ERD_movie_blog.png">
 
 
