@@ -43,3 +43,109 @@ FOREIGN KEY ("movie_id")
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2176089931316302365)[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2020-04-08 07:53:06 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"rico1", "email"=>"rico1@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rico1"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rico1@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (3.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "rico1"], ["email", "rico1@email.com"], ["password_digest", "$2a$12$o57F9EhOZNHEefLZnMF8fOViM1rUvRZBF/bWJbyYsE/oyjV7bHRZm"], ["created_at", "2020-04-08 11:53:07.355227"], ["updated_at", "2020-04-08 11:53:07.355227"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 269ms (Views: 1.6ms | ActiveRecord: 15.3ms | Allocations: 9537)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 07:54:10 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"auth"=>{"username"=>"rico1", "email"=>"rico1@email.com", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"rico1", "email"=>"rico1@email.com", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rico1"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 200 OK in 220ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 1368)
+
+
+Started POST "/auth/login" for ::1 at 2020-04-08 07:59:38 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"auth"=>{"username"=>"rico2", "email"=>"rico2@email.com", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"username"=>"rico2", "email"=>"rico2@email.com", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rico2"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:6:in `login'
+[31mUnpermitted parameter: :email[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.2ms | Allocations: 2663)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/authentication_controller.rb:7:in `login'
+Started POST "/auth/login" for ::1 at 2020-04-08 08:00:04 -0400
+Processing by AuthenticationController#login as */*
+  Parameters: {"user"=>{"username"=>"rico2", "email"=>"rico2@email.com", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"rico2", "email"=>"rico2@email.com", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 141)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: auth):
+  
+app/controllers/authentication_controller.rb:24:in `login_params'
+app/controllers/authentication_controller.rb:6:in `login'
+Started POST "/users" for ::1 at 2020-04-08 08:00:23 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"rico2", "email"=>"rico2@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rico2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rico2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "rico2"], ["email", "rico2@email.com"], ["password_digest", "$2a$12$lhHQns5qU81ngN/QIdSC9.18q/zjpjKv.EhuKba.unFfCJMcLroF2"], ["created_at", "2020-04-08 12:00:24.213028"], ["updated_at", "2020-04-08 12:00:24.213028"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 227ms (ActiveRecord: 3.9ms | Allocations: 10340)
+
+
+  
+NameError (undefined local variable or method `craeted_at' for #<User:0x00007fb7944e8e48>
+Did you mean?  created_at
+               created_at?
+               created_at=):
+  
+app/models/user.rb:14:in `frontend_data'
+app/controllers/users_controller.rb:22:in `create'
+Started POST "/users" for ::1 at 2020-04-08 08:00:53 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"rico2", "email"=>"rico2@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rico2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rico2@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 422 Unprocessable Entity in 226ms (Views: 0.2ms | ActiveRecord: 2.9ms | Allocations: 11122)
+
+
+Started POST "/users" for ::1 at 2020-04-08 08:01:10 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"rico3", "email"=>"rico3@email.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rico3"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rico3@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "rico3"], ["email", "rico3@email.com"], ["password_digest", "$2a$12$PmCoz6.Mh3PYxavkpt0QxO84ycIGmFYPTOSI31ksk6vfUmnsDDWCu"], ["created_at", "2020-04-08 12:01:10.765702"], ["updated_at", "2020-04-08 12:01:10.765702"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 216ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 4557)
+
+
