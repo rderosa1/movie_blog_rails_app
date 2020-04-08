@@ -1,10 +1,12 @@
 class User < ApplicationRecord
+    has_many :posts
+    has_many :movies, through: :posts
     has_secure_password
 
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-    validates :password, length: { minimum: 6 }
+    # validates :password, length: { minimum: 6 }
 
     def frontend_data
         {
