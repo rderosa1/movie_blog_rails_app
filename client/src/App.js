@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import { readAllMovies, readAllPosts } from './services/api-helper';
-import MoviesIndex from './components/Moviesindex';
 
 class App extends Component {
   state = {
@@ -20,16 +19,12 @@ class App extends Component {
   }
 
 
-
   render() {
     return (
       <div className="App">
         <h1>Hello</h1>
       
       <Route Path = '/movies' render={()=> {
-        <MoviesIndex
-        movies=this.state.movies
-        />
       }}/>
       </div>
     );
