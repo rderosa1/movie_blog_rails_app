@@ -7,10 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Movie.create(title:'Pootie Tang', release_year:2001, director:'Louis C.K.')
 
+
+Post.destroy_all
+Movie.destroy_all
+User.destroy_all
+
 user1 = User.create!(username:"rico4", email:"rico4@email.com", password_digest:"1234567")
 p "#{User.count} users were created"
 
-movies = Movie.create!([{title:"Pootie Tang", year_released:2001, director:"Louis C.K.", users:[user1]},
-{title:"Rock'n'roll Highschool", year_released:1980, director:"Roger Corman", users:[user1]},])
+movie1 = Movie.create!({title:"Pootie Tang", year_released:2001, director:"Louis C.K.", users:[user1]})
+movie2 = Movie.create!({title:"Rock'n'roll Highschool", year_released:1980, director:"Roger Corman", users:[user1]})
 
 p "#{Movie.count} movies were created"
+
+posts = Post.create!(content:"This is my first post", user:user1, movie:movie1)
+p "#{Post.count} posts were created"
