@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import { readAllMovies, readAllPosts } from './services/api-helper';
+import MoviesIndex from './components/MoviesIndex';
 
 class App extends Component {
   state = {
-    movies: [],
+    movies: ["The Fall", "Stranger Things"],
     posts: []
   }
 
   async componentDidMount(){
-    const movies = await readAllMovies
-    const posts = await readAllPosts
+    const movies = await readAllMovies()
+    const posts = await readAllPosts()
     this.setState({
       movies,
       posts
@@ -24,8 +25,11 @@ class App extends Component {
       <div className="App">
         <h1>Hello</h1>
       
-      <Route Path = '/movies' render={()=> {
-      }}/>
+        <Route path="/movies"
+        render ={(props) =>
+        <MoviesIndex {...props} movies={this.state.movies}/>
+        }
+        />
       </div>
     );
   }
