@@ -66,6 +66,16 @@ export const createMovie = async (movieData) => {
     return resp.data
 }
 
+export const putMovie = async (item, id) => {
+    const resp = await api.put(`/movies/${id}`, { movies: item })
+    return resp.data
+  }
+
+  export const destroyMovie = async (id) => {
+    const resp = await api.delete(`/movies/${id}`);
+    return resp.data;
+  }
+
 
 //====================================
 //============== Posts ===============
