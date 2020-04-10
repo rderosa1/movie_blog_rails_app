@@ -20,5 +20,6 @@ movie2 = Movie.create!({title:"Rock'n'roll Highschool", year_released:1980, dire
 
 p "#{Movie.count} movies were created"
 
-posts = Post.create!(content:"This is my first post", user:user1, movie:movie1)
+post1 = Post.create!(content:"This is my first post", user:user1, movie:movie1)
+post2 = Post.create!(content:"This is my second post", user:user1, movie:movie2)
 p "#{Post.count} posts were created"

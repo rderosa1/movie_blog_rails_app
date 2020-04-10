@@ -3,10 +3,12 @@ import React from 'react'
 export default function MoviesIndex(props) {
     return(
         <div>
-            Movies Index
+            <h1>Movies Index</h1>
             {props.movies.map((movie, index) => (
                 <div key={index}>
-                {movie.title}
+                <h2>{movie.title}</h2>
+                <p>{movie.year_released}</p>
+                <p>{movie.director}</p>
                 </div>
             ))}
         </div>
