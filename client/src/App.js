@@ -4,7 +4,6 @@ import { Route, Link, Switch } from 'react-router-dom';
 import { readAllMovies, readAllPosts, readOneMovie, createMovie, putMovie, destroyMovie } from './services/api-helper';
 import MoviesIndex from './components/MoviesIndex';
 import PostsIndex from './components/PostsIndex';
-import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
 import { loginUser } from './services/api-helper'
@@ -13,6 +12,7 @@ import { verifyUser } from './services/api-helper'
 import { removeToken } from './services/api-helper'
 import { createPost } from './services/api-helper'
 import MoviesPage from './components/MoviePage'
+import { HomePage } from './components/HomePage'
 
 
 class App extends Component {
@@ -180,7 +180,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Moive Massacre</h1>
+        <HomePage />
 
         {/* <Link to="/movies">View All Movies</Link> */}
         {this.state.currentUser
@@ -210,10 +210,6 @@ class App extends Component {
               <PostsIndex {...props} posts={this.state.posts} />
             }
           />
-
-          <Route exact path="/">
-            <Home />
-          </Route>
 
           <Route exact path="/login" render={(props) => (
             <Login
