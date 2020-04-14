@@ -49,6 +49,19 @@
   padding: 1rem;
 }
 
+.view{
+  margin: .35em;
+  font-size: 2em;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 25px;
+  display: block;
+  color: black;
+}
+
+.view a{
+  text-decoration: none;
+}
 
 .nav-links a {
   text-decoration: none;
@@ -71,6 +84,10 @@
   border: 2px solid black;
   border-radius: 10px;
   padding: 5px 25px;
+}
+
+.App a {
+  text-decoration: none;
 }
 
 .roger{

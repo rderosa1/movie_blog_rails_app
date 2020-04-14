@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { createPost } from '../services/api-helper'
+
 
 class PostPage extends React.Component {
     state = {
@@ -27,6 +28,7 @@ class PostPage extends React.Component {
         e.preventDefault()
         let body = {...this.state.posts, movie_id:oneMovie.id}
         let response = await createPost(body, oneMovie.id)
+        this.props.addPost(response)
         console.log(response)
     }
 
@@ -52,7 +54,7 @@ class PostPage extends React.Component {
                 }
                 <form onSubmit={(e)=>this.handleSubmit(e, oneMovie)}>
 
-                    <textarea onChange={this.handleChange} name="content" value={this.state.value}> </textarea>
+                    <textarea onChange={this.handleChange} name="content" value={this.state.value} rows = "10" cols = "50"> </textarea>
                     <button onClick={this.handleClick}> Post THIS blog </button>
 
                 </form>
@@ -62,4 +64,4 @@ class PostPage extends React.Component {
     }
 }
 
-export default PostPage;
+export default withRouter(PostPage);

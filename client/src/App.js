@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
-import { readAllMovies, readAllPosts, readOneMovie, createMovie, putMovie, destroyMovie } from './services/api-helper';
+import { readAllMovies, readAllPosts, readOneMovie, createMovie, putMovie, destroyMovie, destroyPost } from './services/api-helper';
 import MoviesIndex from './components/MoviesIndex';
 import PostsIndex from './components/PostsIndex';
 import Login from './components/Login'
@@ -16,6 +16,8 @@ import { HomePage } from './components/HomePage'
 import PostPage from './components/PostPage'
 import { withRouter } from 'react-router-dom'
 import { Header } from './components/Header'
+import UpdatePost from './components/UpdatePost'
+
 
 
 class App extends Component {
@@ -24,7 +26,7 @@ class App extends Component {
     this.state = {
       movies: [],
       posts: ["This is my very first blog"],
-      formData: {
+      authFormData: {
         username: "",
         email: "",
         password: ""
@@ -47,6 +49,7 @@ class App extends Component {
 
   //on page load get all movies and posts 
   async componentDidMount() {
+    await this.handleVerify()
     const movies = await readAllMovies()
     const posts = await readAllPosts()
     this.setState({
@@ -113,18 +116,27 @@ class App extends Component {
 
   // have all posts from CDM
 
-  //function to create a new post
-  addPost = async () => {
-    const newPost = await createPost(this.state.formData)
+  // function to create a new post
+  addPost = async (newPost) => {
     this.setState(prevState => ({
-      post: [...prevState.food, newPost],
+      posts: [...prevState.posts, newPost],
       formData: {
         content: ""
       }
     }))
+    this.props.history.push('/movies')
   }
 
-  //handleChange for post
+  //delete a post
+  deletePost = async (postId) => {
+    await destroyPost(postId)
+    this.setState((prevState) => ({ 
+        posts: prevState.posts.filter((post)=> {
+          return postId !== post.id
+        })
+    }))
+    this.props.history.push('/movies')
+  }
 
 
   //================================================
@@ -136,7 +148,9 @@ class App extends Component {
   handleLogin = async () => {
     const currentUser = await loginUser(this.state.authFormData);
     this.setState({ currentUser })
+    this.props.history.push('/')
   }
+
 
   // Function to register a user
   // user data set in state.
@@ -144,6 +158,7 @@ class App extends Component {
     e.preventDefault();
     const currentUser = await registerUser(this.state.authFormData);
     this.setState({ currentUser })
+    this.props.history.push('/')
   }
 
   //Function to verify a user
@@ -190,22 +205,24 @@ class App extends Component {
         <Header />
 
         {/* <Link to="/movies">View All Movies</Link> */}
-        {this.state.currentUser
-          ?
-          <div>
-            {/* Greet user if there is user info set in state. */}
-            <h3>Welcome, {this.state.currentUser && this.state.currentUser.email}<button onClick={this.handleLogout}>logout</button></h3>
-            <Link to="/movies">View All Movies</Link>
+        <Route exact path="/">
+          {this.state.currentUser
+            ?
+            <div>
+              {/* Greet user if there is user info set in state. */}
+              <h3>Welcome, {this.state.currentUser && this.state.currentUser.email}<button onClick={this.handleLogout}>logout</button></h3>
+              <Link to="/movies"><span className="view">View All Movies</span></Link>
               &nbsp;
-              <Link to="/posts">View All Posts</Link>
-            <hr />
-          </div>
-          :
-          <>
-            <Link to="/login"><button onClick={this.handleLoginButton}>Sign In</button></Link>
-            <Link to="/register"><button onClick={this.handleRegisterButton}>Sign Up</button></Link>
-          </>
-        }
+              <Link to="/posts"><span className="view">View All Posts</span></Link>
+              <hr />
+            </div>
+            :
+            <>
+              <Link to="/login"><button onClick={this.handleLoginButton}>Sign In</button></Link>
+              <Link to="/register"><button onClick={this.handleRegisterButton}>Sign Up</button></Link>
+            </>
+          }
+        </Route>
 
         <Switch>
 
@@ -216,6 +233,7 @@ class App extends Component {
               <PostPage {...props} posts={this.state.posts}
                 movies={this.state.movies}
                 currentUser={this.state.currentUser}
+                addPost={this.addPost}
               />
             }
           />
@@ -232,8 +250,8 @@ class App extends Component {
 
           <Route exact path="/login" render={(props) => (
             <Login
-              formData={this.state.formData}
-              handlelogin={this.handleLogin}
+              formData={this.state.authFormData}
+              handleLogin={this.handleLogin}
               handleChange={this.authHandleChange}
             />)} />
 
@@ -248,6 +266,16 @@ class App extends Component {
             <MoviePage
               {...props}
               movies={this.state.movies}
+            />
+          )}
+          />
+
+          <Route exact path="/posts/:id" render={(props) => (
+            <UpdatePost
+              {...props}
+              posts={this.state.posts}
+              addPost = {this.addPost}
+              deletePost = {this.deletePost}
             />
           )}
           />

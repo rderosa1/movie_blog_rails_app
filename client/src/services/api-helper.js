@@ -88,10 +88,9 @@ export const readAllPosts = async () => {
 
 
 export const readOnePost = async (id) => {
-    const resp = await api.get(`/post/${id}`);
+    const resp = await api.get(`/posts/${id}`);
     return resp.data
 }
-
 
 export const createPost = async (postData, movie_id) => {
   console.log('testing API')
@@ -99,8 +98,14 @@ export const createPost = async (postData, movie_id) => {
     return resp.data
 }
 
+export const putPost = async (postData, id) => {
+  console.log('updatepost test')
+  const resp = await api.put(`/posts/${id}`, { post: postData })
+  return resp.data
+}
+
 
 export const destroyPost = async (id) => {
-    const resp = await api.delete(`/post/${id}`);
+    const resp = await api.delete(`/posts/${id}`);
     return resp.data
 }
