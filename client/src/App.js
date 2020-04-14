@@ -11,26 +11,36 @@ import { registerUser } from './services/api-helper'
 import { verifyUser } from './services/api-helper'
 import { removeToken } from './services/api-helper'
 import { createPost } from './services/api-helper'
-import MoviesPage from './components/MoviePage'
+import MoviePage from './components/MoviePage'
 import { HomePage } from './components/HomePage'
+import PostPage from './components/PostPage'
+import { withRouter } from 'react-router-dom'
 
 
 class App extends Component {
-  state = {
-    movies: [],
-    posts: ["this is my first post"],
-    formData: {
-      username: "",
-      email: "",
-      password: ""
-    },
+  constructor(props) {
+    super(props)
+    this.state = {
+      movies: [],
+      posts: ["This is my very first blog"],
+      formData: {
+        username: "",
+        email: "",
+        password: ""
+      },
       currentUser: null
-    
+
+    }
   }
 
-  //onClick function to go to login page
+  //onClick function to go to Sign In page
   handleLoginButton = () => {
     this.props.history.push("/login")
+  }
+
+  //onClick function to go to Sign Up page
+  handleRegisterButton = () => {
+    this.props.history.push("/register")
   }
 
 
@@ -101,11 +111,6 @@ class App extends Component {
   //================================================
 
   // have all posts from CDM
-
-
-  //function to add a post to a movie
-
-
 
   //function to create a new post
   addPost = async () => {
@@ -178,6 +183,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.currentUser)
     return (
       <div className="App">
         <HomePage />
@@ -194,12 +200,24 @@ class App extends Component {
             <hr />
           </div>
           :
-          <button onClick={this.handleLoginButton}>Login/register</button>
+          <>
+            <Link to="/login"><button onClick={this.handleLoginButton}>Sign In</button></Link>
+            <Link to="/register"><button onClick={this.handleRegisterButton}>Sign Up</button></Link>
+          </>
         }
 
         <Switch>
 
           {/* Route to movies */}
+
+          <Route path="/movies/:title/posts"
+            render={(props) =>
+              <PostPage {...props} posts={this.state.posts}
+                movies={this.state.movies}
+                currentUser={this.state.currentUser}
+              />
+            }
+          />
           <Route exact path="/movies"
             render={(props) =>
               <MoviesIndex {...props} movies={this.state.movies} />
@@ -225,13 +243,13 @@ class App extends Component {
               handleRegister={this.handleRegister}
             />)} />
 
-            <Route exact path="/movies/:id" render={(props) => (
-              <MoviesPage 
-              {...props} 
-              movies = {this.state.movies}
-              />
-            )}
+          <Route exact path="/movies/:id" render={(props) => (
+            <MoviePage
+              {...props}
+              movies={this.state.movies}
             />
+          )}
+          />
 
         </Switch>
 
@@ -240,4 +258,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

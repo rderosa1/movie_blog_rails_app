@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   resources :movies
   resources :posts
   
+  resources :movies do 
+      resources :posts
+  end
+
   # ============== Auth ===================
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'

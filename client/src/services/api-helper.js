@@ -93,8 +93,9 @@ export const readOnePost = async (id) => {
 }
 
 
-export const createPost = async (postData) => {
-    const resp = await api.post('/post', {post: postData});
+export const createPost = async (postData, movie_id) => {
+  console.log('testing API')
+    const resp = await api.post(`/movies/${movie_id}/posts`, {post: postData});
     return resp.data
 }
 

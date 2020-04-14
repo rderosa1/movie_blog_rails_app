@@ -7,7 +7,8 @@ export default function MoviesIndex(props) {
             <h1>Movies Index</h1>
             {props.movies.map((movie, index) => (
                 <div key={index}>
-                <Link to={`/movies/${movie.id}`}><h2>{movie.title}</h2></Link>
+                <Link to={`/movies/${movie.id}`}>
+                <h2>{movie.title}</h2></Link>
                 <p>{movie.year_released}</p>
                 <p>{movie.director}</p>
                 </div>

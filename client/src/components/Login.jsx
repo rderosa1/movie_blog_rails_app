@@ -7,7 +7,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <h2>login</h2>
+      <h2>login Page</h2>
       <hr />
       <form onSubmit={(e) => {
         e.preventDefault();
