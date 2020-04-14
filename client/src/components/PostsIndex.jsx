@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 export default function PostsIndex(props) {
     console.log(props)
     return (
-        <div>
+        <div className = "posts-index-page">
             <h1>Post Index</h1>
             {props.posts.map((post, index) => (
-                <div key={index}>
+                <div className = "post-content" key={index}>
                     <Link to={`/posts/${post.id}`}>
-                        {post.content}
+                        <span className = "individual-post">{post.content}</span>
                     </Link>
                 </div>
             ))}
-            <Link to="/movies">Movies</Link>
+            <Link to="/movies"><span className = "movies-link">Movies</span></Link>
         </div>
     )
 }

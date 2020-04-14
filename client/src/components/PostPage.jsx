@@ -42,7 +42,7 @@ class PostPage extends React.Component {
         ))  
         console.log(this.state.posts)
         return (
-            <>
+            <div className = "post-page">
 
                 <h1>Dummy Data</h1>
                 {this.oneMovie &&
@@ -57,7 +57,7 @@ class PostPage extends React.Component {
 
                 </form>
 
-            </>
+            </div>
         )
     }
 }

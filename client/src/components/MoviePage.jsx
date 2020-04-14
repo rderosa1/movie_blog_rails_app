@@ -9,16 +9,15 @@ function MoviePage(props) {
     console.log(oneMovie)
 
     return (
-        <>
+        <div className = "movie-page">
         {oneMovie && 
         <div>
             <p>{oneMovie.title}</p>
         </div>
         }
-
         {oneMovie && <Link to ={`/movies/${oneMovie.title}/posts`}><button> Post a blog </button></Link>}
         {<Link to ="/movies"><button> See Movies </button></Link>}
-        </>
+        </div>
     )
 }
 

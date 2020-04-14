@@ -15,6 +15,7 @@ import MoviePage from './components/MoviePage'
 import { HomePage } from './components/HomePage'
 import PostPage from './components/PostPage'
 import { withRouter } from 'react-router-dom'
+import { Header } from './components/Header'
 
 
 class App extends Component {
@@ -186,7 +187,7 @@ class App extends Component {
     console.log(this.state.currentUser)
     return (
       <div className="App">
-        <HomePage />
+        <Header />
 
         {/* <Link to="/movies">View All Movies</Link> */}
         {this.state.currentUser
@@ -210,7 +211,7 @@ class App extends Component {
 
           {/* Route to movies */}
 
-          <Route path="/movies/:title/posts"
+          <Route exact path="/movies/:title/posts"
             render={(props) =>
               <PostPage {...props} posts={this.state.posts}
                 movies={this.state.movies}

@@ -4,7 +4,7 @@ import React from 'react';
 const Register = (props) => {
 
   return (
-    <div>
+    <div className="register-page">
       <h2>Sign Up</h2>
       <hr />
       <form onSubmit={props.handleRegister} >

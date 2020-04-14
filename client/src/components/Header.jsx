@@ -1,9 +1,13 @@
 import React from 'react'
+import Nav from './Nav'
 
 export const Header = (props) => {
     return (
         <>
-            <h1>Welcome to MovieMassacre</h1>
+            <div className = "header">
+                <h1>Welcome to MovieMassacre</h1>
+                <Nav />
+            </div>
         </>
     )
 
