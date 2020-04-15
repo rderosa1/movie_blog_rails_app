@@ -1,38 +1,246 @@
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  align-items: center;
+  color:white;
+}
+
+ .nav-links li {
+  padding: 1rem;
+}
+
+.view{
+  margin: .35em;
+  font-size: 2em;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 25px;
+  display: block;
+  color: black;
+}
+
+.view a{
+  text-decoration: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color:white;
+  font-weight: 800;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-self: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App button{
+  margin: 1em;
+  font-size: 2em;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 25px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App a {
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.roger{
+  font-style: italic;
+}
+
+.header{
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: rgb(73, 79, 82);
+  color: white;
+  border: 4px double white;
+}
+
+#movie-massacre{
+  display: block;
+  font-family: 'Creepster', cursive;
+  font-size: larger;
+  letter-spacing: 0.1em;
+}
+
+.movie-page{
+  height: 100%;
+  background-color: lightgrey;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: rgb(73, 79, 82);
+  color: black;
+  border: 4px double white;
+}
+
+.movies-index-page {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: rgb(73, 79, 82);
+  color: white;
+  border: 4px double white;
+}
+
+.movie-info{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.movie-info h2, .movie-title{
+  font-size: 2.5rem; 
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.words{
+  color:black;
+}
+
+#textarea{
+border: 1px solid lightgrey;
+}
+
+.movie-info p{
+  margin-bottom: 5px;
+}
+
+.movie-posts{
+  border: 1px solid white;
+  margin: .4rem;
+  border-radius: 10px;
+}
+
+
+.posts-link, .movies-link{
+  margin-top: .5rem;
+  font-size: 1em;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 25px;
+  color:white;
+}
+
+.posts-link a, .movies-link a {
+  text-decoration: none;
+}
+
+.post-page {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: rgb(73, 79, 82);
+  color: white;
+  border: 4px double white;
+}
+
+.posts-index-page {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: rgb(73, 79, 82);
+  color: white;
+  border: 4px double white;
+}
+
+.posts-index-page a {
+  text-decoration: none;
+  color: white;
+  margin: 2rem;
+}
+
+
+.post-content{
+  display: flex;
+  flex-direction: column;
+  margin: .5rem;
+  padding: .5rem;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.login-page input{
+  margin: 1em;
+  font-size: 1em;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 25px;
+}
+
+.register-page{
+  display:flex;
+  flex-direction: column;
+}
+
+.register-page form{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.register-page input{
+  margin: 1em;
+  font-size: 1em;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px 25px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.register{
+  font-size: 2em;
+  background-color: lightblue;
+  padding: 4px 18px;
+  border-radius: 10px;
 }
+
+form a {
+  text-decoration: none;
+}
+
+.movie-info a{
+  text-decoration: none;
+  color:black;
+}
+
+.movie-info p:nth-last-child(1){
+  margin-bottom: 50px;
+}
+

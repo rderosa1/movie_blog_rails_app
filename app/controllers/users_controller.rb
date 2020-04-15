@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     
     if @user.save
       @token = encode({user_id: @user.id, username: @user.username});
-      render json: {user: @user.frontend_data, token: @token}, status: :created, location: @user
+      render json: {user: @user.frontend_data, token: @token}, status: :created
+      # , location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
