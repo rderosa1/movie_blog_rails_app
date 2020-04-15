@@ -9,8 +9,8 @@ export default function MoviesIndex(props) {
                 <div className="movie-info" key={index}>
                     <Link to={`/movies/${movie.id}`}>
                         <h2>{movie.title}</h2></Link>
-                    <p>{movie.year_released}</p>
-                    <p>{movie.director}</p>
+                    <p>release: {movie.year_released}</p>
+                    <p>director: {movie.director}</p>
                     {movie.posts.map((post) => (
                         <div className = "movie-posts">
                             <p>{post.content}</p>
@@ -18,6 +18,7 @@ export default function MoviesIndex(props) {
                     ))}
                 </div>
             ))}
+            <br/>
             <Link to="/posts"><span className="posts-link">Posts</span></Link>
             <br />
         </div>

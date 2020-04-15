@@ -40,10 +40,10 @@ class PostPage extends React.Component {
         return (
             <div className = "post-page">
 
-                <h1>Dummy Data</h1>
+                <h1>Write your post</h1>
                 {this.oneMovie &&
-                    <div>
-                        <p>{this.oneMovie.title}</p>
+                    <div className = "words">
+                        <p>Hello {this.oneMovie.title}</p>
                     </div>
                 }
                 <form onSubmit={(e)=>this.handleSubmit(e, oneMovie)}>

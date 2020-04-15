@@ -44,10 +44,10 @@ export default class UpdatePost extends React.Component {
     render() {
         return (
             <>
-                <h3>Update Page</h3>
+                <h3>Update or Delete This Post</h3>
                 <form onSubmit={(e)=>this.handleSubmit(e)}>
 
-                    <textarea onChange={this.handleChange} name="content" value={this.state.content} rows = "10" cols = "50"> </textarea>
+                    <textarea id = "textarea" onChange={this.handleChange} name="content" value={this.state.content} rows = "10" cols = "50"> </textarea>
                     <button onClick={this.handleSubmit}> UPDATE this blog </button>
 
                 </form>

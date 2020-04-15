@@ -11,7 +11,7 @@ function MoviePage(props) {
     return (
         <div className = "movie-page">
         {oneMovie && 
-        <div>
+        <div className = "movie-title">
             <p>{oneMovie.title}</p>
         </div>
         }

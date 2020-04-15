@@ -220,6 +220,7 @@ class App extends Component {
             <>
               <Link to="/login"><button onClick={this.handleLoginButton}>Sign In</button></Link>
               <Link to="/register"><button onClick={this.handleRegisterButton}>Sign Up</button></Link>
+              <div className = "Footer"> Join the Conversation </div>
             </>
           }
         </Route>

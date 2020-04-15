@@ -5,7 +5,8 @@ export default function PostsIndex(props) {
     console.log(props)
     return (
         <div className = "posts-index-page">
-            <h1>Post Index</h1>
+            <h1>Posts Index</h1>
+            <div className = "posts-render">
             {props.posts.map((post, index) => (
                 <div className = "post-content" key={index}>
                     <Link to={`/posts/${post.id}`}>
@@ -13,6 +14,7 @@ export default function PostsIndex(props) {
                     </Link>
                 </div>
             ))}
+            </div>
             <Link to="/movies"><span className = "movies-link">Movies</span></Link>
         </div>
     )

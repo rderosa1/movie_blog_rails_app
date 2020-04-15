@@ -5,7 +5,7 @@ export const Header = (props) => {
     return (
         <>
             <div className = "header">
-                <h1>Welcome to MovieMassacre</h1>
+                <h1>Welcome to <span id = "movie-massacre">MovieMassacre</span></h1>
                 <Nav />
             </div>
         </>
