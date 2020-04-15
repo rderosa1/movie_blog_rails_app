@@ -29,14 +29,6 @@ export default class UpdatePost extends React.Component {
         this.setState({
             content:value
         })
-        
-        // (prevState => ({
-        //     posts: {
-        //         ...prevState.posts,
-        //         [name]: value
-        //     }
-
-        // }))
     }
 
     handleSubmit = async (e, oneMovie) => {

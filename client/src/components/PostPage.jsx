@@ -32,12 +32,6 @@ class PostPage extends React.Component {
         console.log(response)
     }
 
-    componentDidMount(){
-        // this.setState({
-        //     oneMovie:oneMovie
-        // })
-    }
-
     render() {
         const oneMovie = this.props.movies.length !== 0 && this.props.movies.find((movie) => (
             this.props.match.params.title == movie.title

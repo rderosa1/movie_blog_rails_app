@@ -227,7 +227,6 @@ class App extends Component {
         <Switch>
 
           {/* Route to movies */}
-
           <Route exact path="/movies/:title/posts"
             render={(props) =>
               <PostPage {...props} posts={this.state.posts}
